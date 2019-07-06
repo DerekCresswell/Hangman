@@ -92,5 +92,11 @@ namespace Hangman
             filePath = Console.ReadLine();
         }
 
+        private void GetUserWord() {
+
+
+
+        }
+
     }
 }
