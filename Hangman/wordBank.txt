@@ -875,7 +875,7 @@ eliminate
 elite
 else
 elsewhere
-e-mail
+email
 embrace
 emerge
 emergency
@@ -1558,7 +1558,6 @@ locate
 location
 lock
 long
-long-term
 look
 loose
 lose
@@ -1667,7 +1666,6 @@ mission
 mistake
 mix
 mixture
-mm-hmm
 mode
 model
 moderate
@@ -2456,7 +2454,6 @@ smooth
 snap
 snow
 so
-so-called
 soccer
 social
 society

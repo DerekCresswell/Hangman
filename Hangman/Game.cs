@@ -18,40 +18,40 @@ namespace Hangman
 
         public Game() {
 
-            //All messages are temporary, store in data bank later, search Message
-            Console.WriteLine("Welcome"); //Message
+            Console.WriteLine(Messages.Welcome);
 
             FindFilePath();
 
             words = new List<String>();
             SetWordsArray();
 
-            
+            Console.WriteLine(Messages.Rules);
 
+            GetUserWord();
+
+        }
+
+        private void WriteMessage(String messageName) {
+            Console.WriteLine(Messages.ResourceManager.GetString(messageName));
         }
 
         private void SetWordsArray() {
             
-            try
-            {
+            try {
 
                 UseStreamReader();
 
-            }
-            catch (ArgumentNullException e)
-            {
+            } catch (ArgumentNullException e) {
                 Console.WriteLine("Exception : " + e.Message);
                 filePath = null;
                 FindFilePath();
             }
-            catch (FileNotFoundException e)
-            {
+            catch (FileNotFoundException e) {
                 Console.WriteLine("Exception : " + e.Message);
                 filePath = null;
                 FindFilePath();
             } catch (IOException e) {
-            } catch (Exception e)
-            {
+            } catch (Exception e) {
                     Console.WriteLine("Exception : " + e.Message);
             }
 
@@ -78,7 +78,7 @@ namespace Hangman
             //Implement directory usage
 
             if (filePath == null) {
-                Console.WriteLine("Invalid filepath"); //Message
+                Console.WriteLine(Messages.InvalidFilePath);
                 GetUserFilePath();
             }
 
@@ -86,15 +86,14 @@ namespace Hangman
 
         }
 
-        private void GetUserFilePath()
-        {
-            Console.Write("\nPlease Enter the filepath to your word bank\nPath : "); //Message
+        private void GetUserFilePath() {
+            Console.Write(Messages.EnterFilePath);
             filePath = Console.ReadLine();
         }
 
         private void GetUserWord() {
 
-
+            Console.WriteLine(Messages.GetUserLength);
 
         }
 
