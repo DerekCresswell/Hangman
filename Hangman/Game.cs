@@ -50,14 +50,13 @@ namespace Hangman
                 Console.WriteLine("Exception : " + e.Message);
                 filePath = null;
                 FindFilePath();
-            }
-            catch (FileNotFoundException e) {
+            } catch (FileNotFoundException e) {
                 Console.WriteLine("Exception : " + e.Message);
                 filePath = null;
                 FindFilePath();
-            } catch (IOException e) {
+            } catch (IOException) {
             } catch (Exception e) {
-                    Console.WriteLine("Exception : " + e.Message);
+                Console.WriteLine("Exception : " + e.Message);
             }
 
         }
@@ -92,41 +91,25 @@ namespace Hangman
 
         }
 
-        //Implement alpha parsing
         private void GetUserWord() {
 
+            //Length
             Console.Write(Messages.GetUserLength);
 
-            numOfChars = 0;
-            string length = Console.ReadLine();
-
-            numOfChars = CheckUserLength(length);
-
-            while(numOfChars <= 0) {
-
-                Console.Write(Messages.InvalidEntry);
-                length = Console.ReadLine();
-                numOfChars = CheckUserLength(length);
-
-            }
-
+            //Alpha parsing still required, enums?
+            ParseForLength();
+            
         }
 
-        private int CheckUserLength(string length) {
+        private void ParseForLength() {
 
-            int toRet = 0;
-
-            try {
-                toRet = Int32.Parse(length);
-            } catch {
-                return -1;
+            if(!Int32.TryParse(Console.ReadLine(), out numOfChars)) {
+                Console.Write(Messages.InvalidEntry);
+                ParseForLength();
+            } if(numOfChars <= 0 || numOfChars > 25) {
+                Console.Write(Messages.InvalidEntry);
+                ParseForLength();
             }
-
-            if (toRet <= 25) {
-                return toRet;
-            }
-            return -1;
-
         }
 
     }
