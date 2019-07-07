@@ -71,12 +71,22 @@ namespace Hangman {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter the length of your word
+        ///   Looks up a localized string similar to Please enter the length of your word (Must be 25 characters or less)
         ///Enter : .
         /// </summary>
         internal static string GetUserLength {
             get {
                 return ResourceManager.GetString("GetUserLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid entry! Please input a valid entry.
+        ///Enter : .
+        /// </summary>
+        internal static string InvalidEntry {
+            get {
+                return ResourceManager.GetString("InvalidEntry", resourceCulture);
             }
         }
         
@@ -90,9 +100,11 @@ namespace Hangman {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please read and follow the rules while playing,
+        ///   Looks up a localized string similar to 
+        ///Please read and follow the rules while playing,
         ///1. Don&apos;t cheat, it&apos;s just no fun.
-        ///2. Your word must be a single word, no spaces, hyphens, or punctuation..
+        ///2. Your word must be a single word, no spaces, hyphens, or punctuation.
+        ///.
         /// </summary>
         internal static string Rules {
             get {
@@ -101,7 +113,8 @@ namespace Hangman {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to Hangman!.
+        ///   Looks up a localized string similar to Welcome to Hangman!
+        ///.
         /// </summary>
         internal static string Welcome {
             get {

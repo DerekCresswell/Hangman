@@ -122,18 +122,25 @@
 Enter : </value>
   </data>
   <data name="GetUserLength" xml:space="preserve">
-    <value>Please enter the length of your word
+    <value>Please enter the length of your word (Must be 25 characters or less)
+Enter : </value>
+  </data>
+  <data name="InvalidEntry" xml:space="preserve">
+    <value>Invalid entry! Please input a valid entry.
 Enter : </value>
   </data>
   <data name="InvalidFilePath" xml:space="preserve">
     <value>The current filepath to your word bank is invalid.</value>
   </data>
   <data name="Rules" xml:space="preserve">
-    <value>Please read and follow the rules while playing,
+    <value>
+Please read and follow the rules while playing,
 1. Don't cheat, it's just no fun.
-2. Your word must be a single word, no spaces, hyphens, or punctuation.</value>
+2. Your word must be a single word, no spaces, hyphens, or punctuation.
+</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Welcome to Hangman!</value>
+    <value>Welcome to Hangman!
+</value>
   </data>
 </root>

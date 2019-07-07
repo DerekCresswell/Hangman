@@ -9,12 +9,15 @@ namespace Hangman
 
         private string filePath;
 
-        private List<String> words;
+        private List<string> words;
 
         private int numOfChars;
-        private char[] guessedChars = new char[26];
+        private List<char> guessedChars;
         private char[] correctChars;
         private int guesses = 0;
+
+        //Const
+        private int MAXLENGTH = 25;
 
         public Game() {
 
@@ -22,7 +25,9 @@ namespace Hangman
 
             FindFilePath();
 
-            words = new List<String>();
+            words = new List<string>();
+            guessedChars = new List<char>();
+
             SetWordsArray();
 
             Console.WriteLine(Messages.Rules);
@@ -31,7 +36,7 @@ namespace Hangman
 
         }
 
-        private void WriteMessage(String messageName) {
+        private void WriteMessage(string messageName) {
             Console.WriteLine(Messages.ResourceManager.GetString(messageName));
         }
 
@@ -61,7 +66,7 @@ namespace Hangman
 
             using (StreamReader sr = new StreamReader(filePath)) {
 
-                String curLine = sr.ReadLine();
+                string curLine = sr.ReadLine();
 
                 while (curLine != null) {
                     words.Add(curLine);
@@ -79,21 +84,48 @@ namespace Hangman
 
             if (filePath == null) {
                 Console.WriteLine(Messages.InvalidFilePath);
-                GetUserFilePath();
+                Console.Write(Messages.EnterFilePath);
+                filePath = Console.ReadLine();
             }
 
             SetWordsArray();
 
         }
 
-        private void GetUserFilePath() {
-            Console.Write(Messages.EnterFilePath);
-            filePath = Console.ReadLine();
-        }
-
+        //Implement alpha parsing
         private void GetUserWord() {
 
-            Console.WriteLine(Messages.GetUserLength);
+            Console.Write(Messages.GetUserLength);
+
+            numOfChars = 0;
+            string length = Console.ReadLine();
+
+            numOfChars = CheckUserLength(length);
+
+            while(numOfChars <= 0) {
+
+                Console.Write(Messages.InvalidEntry);
+                length = Console.ReadLine();
+                numOfChars = CheckUserLength(length);
+
+            }
+
+        }
+
+        private int CheckUserLength(string length) {
+
+            int toRet = 0;
+
+            try {
+                toRet = Int32.Parse(length);
+            } catch {
+                return -1;
+            }
+
+            if (toRet <= 25) {
+                return toRet;
+            }
+            return -1;
 
         }
 
