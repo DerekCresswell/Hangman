@@ -9,30 +9,31 @@ namespace Hangman
 
         private string filePath;
 
-        private List<string> words;
-
         private int numOfChars;
-        private List<char> guessedChars;
+        private List<char> guessedChars = new List<char>();
         private char[] correctChars;
         private int guesses = 0;
 
+        private List<string> words = new List<string>();
+
         //Const
         private int MAXLENGTH = 25;
+        private char[] VOWELS = "aeiou".ToCharArray();
+        private char[] CONSONANTS = "bcfghjklmnpqrstvwxyz".ToCharArray();
 
         public Game() {
 
             Console.WriteLine(Messages.Welcome);
 
-            FindFilePath();
-
-            words = new List<string>();
-            guessedChars = new List<char>();
+            FindFilePath();     
 
             SetWordsArray();
 
             Console.WriteLine(Messages.Rules);
 
             GetUserWord();
+
+            MakeGuess();
 
         }
 
@@ -98,7 +99,9 @@ namespace Hangman
 
             //Alpha parsing still required, enums?
             ParseForLength();
-            
+
+            correctChars = new char[numOfChars];
+
         }
 
         private void ParseForLength() {
@@ -106,10 +109,44 @@ namespace Hangman
             if(!Int32.TryParse(Console.ReadLine(), out numOfChars)) {
                 Console.Write(Messages.InvalidEntry);
                 ParseForLength();
-            } if(numOfChars <= 0 || numOfChars > 25) {
+            }
+            if (numOfChars <= 0 || numOfChars > MAXLENGTH) {
                 Console.Write(Messages.InvalidEntry);
                 ParseForLength();
             }
+        }
+
+        private void MakeGuess() {
+
+
+
+        }
+
+        private void DrawTurn() {
+
+            DrawMan();
+            DrawGuesses();
+
+        }
+
+        private void DrawMan() {
+
+        }
+
+        private void DrawGuesses() {
+
+            string toDraw = "";
+
+            for(int i = 0; i < numOfChars; i++) {
+                if (correctChars[i] != default(char)) {
+                    toDraw = toDraw + " " + correctChars[i];
+                } else {
+                    toDraw = toDraw + " _";
+                }
+            }
+
+            Console.WriteLine("\n" + toDraw + "\n");
+
         }
 
     }

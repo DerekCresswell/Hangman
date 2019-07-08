@@ -113,6 +113,15 @@ namespace Hangman {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string StickMan1 {
+            get {
+                return ResourceManager.GetString("StickMan1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome to Hangman!
         ///.
         /// </summary>

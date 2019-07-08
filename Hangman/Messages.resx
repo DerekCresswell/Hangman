@@ -139,6 +139,9 @@ Please read and follow the rules while playing,
 2. Your word must be a single word, no spaces, hyphens, or punctuation.
 </value>
   </data>
+  <data name="StickMan1" xml:space="preserve">
+    <value />
+  </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to Hangman!
 </value>
