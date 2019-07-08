@@ -13,6 +13,7 @@ namespace Hangman
         private List<char> guessedChars = new List<char>();
         private char[] correctChars;
         private int guesses = 0;
+        private int incorrectGuesses = 0;
 
         private List<string> words = new List<string>();
 
@@ -128,12 +129,18 @@ namespace Hangman
 
         private void DrawTurn() {
 
-            DrawMan(guesses);
+            DrawMan(incorrectGuesses);
             DrawGuesses();
 
         }
 
         private void DrawMan(int stage) {
+
+            if(stage < 0 || stage > 6) {
+                throw new Exception("Invalid Stage Number!");
+            }
+
+            Console.WriteLine(Messages.ResourceManager.GetString(new string("StickMan" + stage)));
 
         }
 
