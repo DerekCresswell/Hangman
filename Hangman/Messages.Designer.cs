@@ -61,6 +61,15 @@ namespace Hangman {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Great! Let&apos;s begin playing!.
+        /// </summary>
+        internal static string Begin {
+            get {
+                return ResourceManager.GetString("Begin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter a valid file path for your word bank.
         ///Enter : .
         /// </summary>
@@ -113,11 +122,142 @@ namespace Hangman {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to 
+        ///    +-----+
+        ///    |     |
+        ///    |
+        ///    |
+        ///    |
+        ///    |
+        ///    |
+        ///   ++-------+
+        ///   |        |
+        ///   +--------+
+        ///.
+        /// </summary>
+        internal static string StickMan0 {
+            get {
+                return ResourceManager.GetString("StickMan0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    +-----+
+        ///    |     |
+        ///    |     0
+        ///    |
+        ///    |
+        ///    |
+        ///    |
+        ///   ++-------+
+        ///   |        |
+        ///   +--------+
+        ///.
         /// </summary>
         internal static string StickMan1 {
             get {
                 return ResourceManager.GetString("StickMan1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    +-----+
+        ///    |     |
+        ///    |     0
+        ///    |     |
+        ///    |     |
+        ///    |
+        ///    |
+        ///   ++-------+
+        ///   |        |
+        ///   +--------+
+        ///.
+        /// </summary>
+        internal static string StickMan2 {
+            get {
+                return ResourceManager.GetString("StickMan2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    +-----+
+        ///    |     |
+        ///    |     0
+        ///    |    /|
+        ///    |     |
+        ///    |
+        ///    |
+        ///   ++-------+
+        ///   |        |
+        ///   +--------+
+        ///.
+        /// </summary>
+        internal static string StickMan3 {
+            get {
+                return ResourceManager.GetString("StickMan3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    +-----+
+        ///    |     |
+        ///    |     0
+        ///    |    /|\
+        ///    |     |
+        ///    |
+        ///    |
+        ///   ++-------+
+        ///   |        |
+        ///   +--------+
+        ///.
+        /// </summary>
+        internal static string StickMan4 {
+            get {
+                return ResourceManager.GetString("StickMan4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    +-----+
+        ///    |     |
+        ///    |     0
+        ///    |    /|\
+        ///    |     |
+        ///    |    /
+        ///    |
+        ///   ++-------+
+        ///   |        |
+        ///   +--------+
+        ///.
+        /// </summary>
+        internal static string StickMan5 {
+            get {
+                return ResourceManager.GetString("StickMan5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    +-----+
+        ///    |     |
+        ///    |     0
+        ///    |    /|\
+        ///    |     |
+        ///    |    / \
+        ///    |
+        ///   ++-------+
+        ///   |        |
+        ///   +--------+
+        ///.
+        /// </summary>
+        internal static string StickMan6 {
+            get {
+                return ResourceManager.GetString("StickMan6", resourceCulture);
             }
         }
         

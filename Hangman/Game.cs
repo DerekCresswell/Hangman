@@ -33,6 +33,10 @@ namespace Hangman
 
             GetUserWord();
 
+            Console.WriteLine(Messages.Begin);
+
+            DrawTurn();
+
             MakeGuess();
 
         }
@@ -124,28 +128,28 @@ namespace Hangman
 
         private void DrawTurn() {
 
-            DrawMan();
+            DrawMan(guesses);
             DrawGuesses();
 
         }
 
-        private void DrawMan() {
+        private void DrawMan(int stage) {
 
         }
 
         private void DrawGuesses() {
 
-            string toDraw = "";
+            Console.WriteLine();
 
             for(int i = 0; i < numOfChars; i++) {
                 if (correctChars[i] != default(char)) {
-                    toDraw = toDraw + " " + correctChars[i];
+                    Console.Write(" " + correctChars[i]);
                 } else {
-                    toDraw = toDraw + " _";
+                    Console.Write(" _");
                 }
             }
 
-            Console.WriteLine("\n" + toDraw + "\n");
+            Console.WriteLine();
 
         }
 

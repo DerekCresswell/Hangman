@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Begin" xml:space="preserve">
+    <value>Great! Let's begin playing!</value>
+  </data>
   <data name="EnterFilePath" xml:space="preserve">
     <value>Please enter a valid file path for your word bank.
 Enter : </value>
@@ -139,8 +142,103 @@ Please read and follow the rules while playing,
 2. Your word must be a single word, no spaces, hyphens, or punctuation.
 </value>
   </data>
+  <data name="StickMan0" xml:space="preserve">
+    <value>
+    +-----+
+    |     |
+    |
+    |
+    |
+    |
+    |
+   ++-------+
+   |        |
+   +--------+
+</value>
+  </data>
   <data name="StickMan1" xml:space="preserve">
-    <value />
+    <value>
+    +-----+
+    |     |
+    |     0
+    |
+    |
+    |
+    |
+   ++-------+
+   |        |
+   +--------+
+</value>
+  </data>
+  <data name="StickMan2" xml:space="preserve">
+    <value>    
+    +-----+
+    |     |
+    |     0
+    |     |
+    |     |
+    |
+    |
+   ++-------+
+   |        |
+   +--------+
+</value>
+  </data>
+  <data name="StickMan3" xml:space="preserve">
+    <value>
+    +-----+
+    |     |
+    |     0
+    |    /|
+    |     |
+    |
+    |
+   ++-------+
+   |        |
+   +--------+
+</value>
+  </data>
+  <data name="StickMan4" xml:space="preserve">
+    <value>
+    +-----+
+    |     |
+    |     0
+    |    /|\
+    |     |
+    |
+    |
+   ++-------+
+   |        |
+   +--------+
+</value>
+  </data>
+  <data name="StickMan5" xml:space="preserve">
+    <value>
+    +-----+
+    |     |
+    |     0
+    |    /|\
+    |     |
+    |    /
+    |
+   ++-------+
+   |        |
+   +--------+
+</value>
+  </data>
+  <data name="StickMan6" xml:space="preserve">
+    <value>
+    +-----+
+    |     |
+    |     0
+    |    /|\
+    |     |
+    |    / \
+    |
+   ++-------+
+   |        |
+   +--------+
+</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to Hangman!
