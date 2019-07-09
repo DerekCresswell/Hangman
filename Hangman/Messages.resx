@@ -127,6 +127,11 @@
     <value>Please enter a valid file path for your word bank.
 Enter : </value>
   </data>
+  <data name="EnterYN" xml:space="preserve">
+    <value>
+Please enter Y or N
+Enter : "</value>
+  </data>
   <data name="FailedGuess" xml:space="preserve">
     <value>Oh no! I'll try again.</value>
   </data>
@@ -140,6 +145,9 @@ Enter : </value>
   </data>
   <data name="InvalidFilePath" xml:space="preserve">
     <value>The current filepath to your word bank is invalid.</value>
+  </data>
+  <data name="NextOccurence" xml:space="preserve">
+    <value>Is there another occurence of the letter </value>
   </data>
   <data name="Rules" xml:space="preserve">
     <value>

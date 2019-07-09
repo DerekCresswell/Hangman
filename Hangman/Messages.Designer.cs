@@ -89,6 +89,17 @@ namespace Hangman {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///Please enter Y or N
+        ///Enter : &quot;.
+        /// </summary>
+        internal static string EnterYN {
+            get {
+                return ResourceManager.GetString("EnterYN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Oh no! I&apos;ll try again..
         /// </summary>
         internal static string FailedGuess {
@@ -123,6 +134,15 @@ namespace Hangman {
         internal static string InvalidFilePath {
             get {
                 return ResourceManager.GetString("InvalidFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is there another occurence of the letter .
+        /// </summary>
+        internal static string NextOccurence {
+            get {
+                return ResourceManager.GetString("NextOccurence", resourceCulture);
             }
         }
         

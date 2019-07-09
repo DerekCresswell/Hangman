@@ -122,7 +122,6 @@ namespace Hangman
         }
 
         private void ParseForLength() {
-
             if(!Int32.TryParse(Console.ReadLine(), out numOfChars)) {
                 Console.Write(Messages.InvalidEntry);
                 ParseForLength();
@@ -131,6 +130,23 @@ namespace Hangman
                 Console.Write(Messages.InvalidEntry);
                 ParseForLength();
             }
+        }
+
+        private int ParseForLength(int maxLength) {
+
+            int toRet;
+
+            if (!Int32.TryParse(Console.ReadLine(), out toRet)) {
+                Console.Write(Messages.InvalidEntry);
+                ParseForLength();
+            }
+            if (toRet < 1 || toRet > maxLength) {
+                Console.Write(Messages.InvalidEntry);
+                ParseForLength();
+            }
+
+            return toRet;
+
         }
 
         private bool MakeGuess() {
@@ -148,11 +164,12 @@ namespace Hangman
                 guessedChars.Add(toGuess);
 
                 Console.WriteLine(Messages.CompGuess + toGuess + "?");
-                Console.Write("\nPlease Enter Y or N\nEnter : "); //Messages
+                Console.Write(Messages.EnterYN); 
                 char response = CheckValidity('y', 'n');
 
                 if (response == 'y') {
-                    //GetCharPositions();
+                    Console.Write("\nPlease enter the position of the letter " + toGuess + " (a number between 1 and " + numOfChars + ")" + "\nEnter : ");
+                    GetCharPositions(toGuess);
                 } else {
                     Console.WriteLine(Messages.FailedGuess);
                     incorrectGuesses++;
@@ -188,6 +205,30 @@ namespace Hangman
             }
 
             //return curChar[0];
+
+        }
+
+        private void GetCharPositions(char guessed) {
+
+            int pos = ParseForLength(numOfChars) - 1;
+
+            if (correctChars[pos] == default(char)) {
+                correctChars[pos] = guessed;
+                DrawGuesses();
+            } else {
+                Console.Write(Messages.InvalidEntry);
+                GetCharPositions(guessed);
+            }
+
+            Console.WriteLine(Messages.NextOccurence + guessed + " in the word?");
+            Console.Write(Messages.EnterYN);
+            char response = CheckValidity('y', 'n');
+
+            if (response == 'y') {
+                Console.Write("\nPlease enter the position of the letter " + guessed + " (a number between 1 and " + numOfChars + ")" + "\nEnter : ");
+                GetCharPositions(guessed);
+            } 
+            //Need escape if you accidently put y
 
         }
 
