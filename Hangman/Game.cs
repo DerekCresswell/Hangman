@@ -170,19 +170,20 @@ namespace Hangman
 
             char toGuess = default(char);
 
-            if (!Contains(correctChars, VOWELS)) {
+            if(!Contains(correctChars, VOWELS)) {
 
                 Random rnd = new Random();
 
-                toGuess = VOWELS[rnd.Next(VOWELS.Length + 1)];
-                while (Contains(guessedChars, toGuess))
-                {
+                toGuess = VOWELS[rnd.Next(VOWELS.Length)];
+                while (Contains(guessedChars, toGuess)) {
 
-                    toGuess = VOWELS[rnd.Next(VOWELS.Length + 1)];
+                    toGuess = VOWELS[rnd.Next(VOWELS.Length)];
 
                 }
 
             }
+
+            //find most common letter in remaining words
 
             return toGuess;
 
