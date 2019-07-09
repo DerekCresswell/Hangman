@@ -91,7 +91,7 @@ namespace Hangman {
         /// <summary>
         ///   Looks up a localized string similar to 
         ///Please enter Y or N
-        ///Enter : &quot;.
+        ///Enter : .
         /// </summary>
         internal static string EnterYN {
             get {

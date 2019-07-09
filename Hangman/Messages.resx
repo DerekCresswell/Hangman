@@ -130,7 +130,7 @@ Enter : </value>
   <data name="EnterYN" xml:space="preserve">
     <value>
 Please enter Y or N
-Enter : "</value>
+Enter : </value>
   </data>
   <data name="FailedGuess" xml:space="preserve">
     <value>Oh no! I'll try again.</value>
