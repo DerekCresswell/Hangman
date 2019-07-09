@@ -17,8 +17,10 @@ namespace Hangman
 
         private List<string> words = new List<string>();
 
+        private List<char[]> posWords = new List<char[]>();
+
         //Const
-        private int MAXLENGTH = 25;
+        const int MAXLENGTH = 25;
         private char[] VOWELS = "aeiou".ToCharArray();
         private char[] CONSONANTS = "bcfghjklmnpqrstvwxyz".ToCharArray();
 
@@ -36,9 +38,19 @@ namespace Hangman
 
             Console.WriteLine(Messages.Begin);
 
+            foreach(string s in words) {
+                if(s.Length == numOfChars) {
+                    posWords.Add(s.ToCharArray());
+                }
+            }
+
             DrawTurn();
 
-            MakeGuess();
+            while (MakeGuess()) {
+                DrawTurn();
+            }
+
+            //End game, reset, add new word
 
         }
 
@@ -121,15 +133,96 @@ namespace Hangman
             }
         }
 
-        private void MakeGuess() {
+        private bool MakeGuess() {
 
+            if(!Contains(correctChars, VOWELS)) {
 
+                Random rnd = new Random();
+
+                char toGuess = VOWELS[rnd.Next(VOWELS.Length + 1)];
+                while (Contains(guessedChars, toGuess)) {
+
+                    toGuess = VOWELS[rnd.Next(VOWELS.Length + 1)];
+
+                }
+                guessedChars.Add(toGuess);
+
+                Console.WriteLine(Messages.CompGuess + toGuess + "?");
+                Console.Write("\nPlease Enter Y or N\nEnter : "); //Messages
+                char response = CheckValidity('y', 'n');
+
+                if (response == 'y') {
+                    //GetCharPositions();
+                } else {
+                    Console.WriteLine(Messages.FailedGuess);
+                    incorrectGuesses++;
+                }
+
+                guesses++;
+
+            }
+
+            //temp
+            return false;
+        }
+
+        private char CheckValidity(char i, char j) {
+
+            char[] curChar = Console.ReadLine().ToLower().ToCharArray();
+
+            /*
+            if (curChar.Length != 1) {
+                Console.Write(Messages.InvalidEntry);
+                return CheckValidity(i, j);
+            } else if(curChar[0] != i || curChar[0] != j) {
+                Console.Write(Messages.InvalidEntry);
+                return CheckValidity(i, j);
+            }
+            */
+
+            if (curChar[0] == i || curChar[0] == j) {
+                return curChar[0];
+            } else {
+                Console.Write(Messages.InvalidEntry);
+                return CheckValidity(i, j);
+            }
+
+            //return curChar[0];
+
+        }
+
+        private bool Contains(char[] cArr, char[] check) {
+
+            foreach (char c1 in cArr) {
+                foreach (char c2 in check) {
+                    if (c1 == c2) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+
+        }
+
+        private bool Contains(List<char> cArr, char check) {
+
+            foreach(char c in cArr) {
+                if(c == check) {
+                    return true;
+                }
+            }
+
+            return false;
 
         }
 
         private void DrawTurn() {
-
-            DrawMan(incorrectGuesses);
+            try {
+                DrawMan(incorrectGuesses);
+            } catch {
+                //End game
+            }
             DrawGuesses();
 
         }
@@ -156,7 +249,7 @@ namespace Hangman
                 }
             }
 
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
         }
 

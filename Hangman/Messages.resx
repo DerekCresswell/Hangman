@@ -120,9 +120,15 @@
   <data name="Begin" xml:space="preserve">
     <value>Great! Let's begin playing!</value>
   </data>
+  <data name="CompGuess" xml:space="preserve">
+    <value>Does your word contain the letter </value>
+  </data>
   <data name="EnterFilePath" xml:space="preserve">
     <value>Please enter a valid file path for your word bank.
 Enter : </value>
+  </data>
+  <data name="FailedGuess" xml:space="preserve">
+    <value>Oh no! I'll try again.</value>
   </data>
   <data name="GetUserLength" xml:space="preserve">
     <value>Please enter the length of your word (Must be 25 characters or less)

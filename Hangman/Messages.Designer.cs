@@ -70,12 +70,30 @@ namespace Hangman {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Does your word contain the letter .
+        /// </summary>
+        internal static string CompGuess {
+            get {
+                return ResourceManager.GetString("CompGuess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter a valid file path for your word bank.
         ///Enter : .
         /// </summary>
         internal static string EnterFilePath {
             get {
                 return ResourceManager.GetString("EnterFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oh no! I&apos;ll try again..
+        /// </summary>
+        internal static string FailedGuess {
+            get {
+                return ResourceManager.GetString("FailedGuess", resourceCulture);
             }
         }
         
