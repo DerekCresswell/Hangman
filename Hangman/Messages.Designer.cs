@@ -138,6 +138,15 @@ namespace Hangman {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I&apos;ve lost!.
+        /// </summary>
+        internal static string LostGame {
+            get {
+                return ResourceManager.GetString("LostGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is there another occurence of the letter .
         /// </summary>
         internal static string NextOccurence {

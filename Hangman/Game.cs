@@ -21,6 +21,7 @@ namespace Hangman
 
         //Const
         const int MAXLENGTH = 25;
+        const int NUMSTAGES = 6;
         private char[] VOWELS = "aeiou".ToCharArray();
         private char[] CONSONANTS = "bcfghjklmnpqrstvwxyz".ToCharArray();
 
@@ -151,36 +152,60 @@ namespace Hangman
 
         private bool MakeGuess() {
 
-            if(!Contains(correctChars, VOWELS)) {
+            ExecGuess(ChooseGuess());
+
+            //Needs improving \/
+            if (incorrectGuesses < NUMSTAGES) {
+                return true;
+            } else {
+                Console.WriteLine(Messages.LostGame);
+                DrawMan(NUMSTAGES);
+                return false;
+            }
+        }
+
+        private char ChooseGuess() {
+            //The logic for this needs to be mostly random for first few
+            //Then should use posWords to determine ideal choice
+
+            char toGuess = default(char);
+
+            if (!Contains(correctChars, VOWELS)) {
 
                 Random rnd = new Random();
 
-                char toGuess = VOWELS[rnd.Next(VOWELS.Length + 1)];
-                while (Contains(guessedChars, toGuess)) {
+                toGuess = VOWELS[rnd.Next(VOWELS.Length + 1)];
+                while (Contains(guessedChars, toGuess))
+                {
 
                     toGuess = VOWELS[rnd.Next(VOWELS.Length + 1)];
 
                 }
-                guessedChars.Add(toGuess);
-
-                Console.WriteLine(Messages.CompGuess + toGuess + "?");
-                Console.Write(Messages.EnterYN); 
-                char response = CheckValidity('y', 'n');
-
-                if (response == 'y') {
-                    Console.Write("\nPlease enter the position of the letter " + toGuess + " (a number between 1 and " + numOfChars + ")" + "\nEnter : ");
-                    GetCharPositions(toGuess);
-                } else {
-                    Console.WriteLine(Messages.FailedGuess);
-                    incorrectGuesses++;
-                }
-
-                guesses++;
 
             }
 
-            //temp
-            return false;
+            return toGuess;
+
+        }
+
+        private void ExecGuess(char toGuess) {
+
+            guessedChars.Add(toGuess);
+
+            Console.WriteLine(Messages.CompGuess + toGuess + "?");
+            Console.Write(Messages.EnterYN);
+            char response = CheckValidity('y', 'n');
+
+            if (response == 'y') {
+                Console.Write("\nPlease enter the position of the letter " + toGuess + " (a number between 1 and " + numOfChars + ")" + "\nEnter : ");
+                GetCharPositions(toGuess);
+            } else {
+                Console.WriteLine(Messages.FailedGuess);
+                incorrectGuesses++;
+            }
+
+            guesses++;
+
         }
 
         private char CheckValidity(char i, char j) {
@@ -215,6 +240,7 @@ namespace Hangman
             if (correctChars[pos] == default(char)) {
                 correctChars[pos] = guessed;
                 DrawGuesses();
+                UpdatePosWords(pos, guessed);
             } else {
                 Console.Write(Messages.InvalidEntry);
                 GetCharPositions(guessed);
@@ -229,6 +255,17 @@ namespace Hangman
                 GetCharPositions(guessed);
             } 
             //Need escape if you accidently put y
+
+        }
+
+        private void UpdatePosWords(int pos, char check) {
+
+            for(int i = 0; i < posWords.Count; i++) {
+                if(posWords[i][pos] != check) {
+                    posWords.RemoveAt(i);
+                    i--;
+                }
+            }
 
         }
 
@@ -270,7 +307,7 @@ namespace Hangman
 
         private void DrawMan(int stage) {
 
-            if(stage < 0 || stage > 6) {
+            if(stage < 0 || stage > NUMSTAGES) {
                 throw new Exception("Invalid Stage Number!");
             }
 
