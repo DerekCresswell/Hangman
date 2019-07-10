@@ -172,6 +172,9 @@ namespace Hangman
             //The logic for this needs to be mostly random for first few
             //Then should use posWords to determine ideal choice
 
+            //TEMP
+            changeCommonLetters = true;
+
             if(changeCommonLetters) {
                 ChangeCommonLetters();
             }
