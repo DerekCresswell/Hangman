@@ -15,15 +15,19 @@ namespace Hangman
         private int guesses = 0;
         private int incorrectGuesses = 0;
 
-        private List<string> words = new List<string>();
-
+        private bool changeCommonLetters = true;
+        private int[] commonLetters;
         private List<char[]> posWords = new List<char[]>();
+
+        private List<string> words = new List<string>();
 
         //Const
         const int MAXLENGTH = 25;
         const int NUMSTAGES = 6;
-        private char[] VOWELS = "aeiou".ToCharArray();
-        private char[] CONSONANTS = "bcfghjklmnpqrstvwxyz".ToCharArray();
+        const int ASCIICONST = 97;
+        private char[] VOWELS = "aeiouy".ToCharArray();
+        private char[] CONSONANTS = "bcfghjklmnpqrstvwxz".ToCharArray();
+        private char[] ALPHABET = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
 
         public Game() {
 
@@ -168,22 +172,36 @@ namespace Hangman
             //The logic for this needs to be mostly random for first few
             //Then should use posWords to determine ideal choice
 
+            if(changeCommonLetters) {
+                ChangeCommonLetters();
+            }
+
             char toGuess = default(char);
+            int max = 0;
 
-            if(!Contains(correctChars, VOWELS)) {
+            if (!Contains(correctChars, VOWELS)) {
 
-                Random rnd = new Random();
-
-                toGuess = VOWELS[rnd.Next(VOWELS.Length)];
-                while (Contains(guessedChars, toGuess)) {
-
-                    toGuess = VOWELS[rnd.Next(VOWELS.Length)];
-
+                foreach(char c in VOWELS) {
+                    if(commonLetters[((int)c) - 97] > max) {
+                        if(!Contains(guessedChars, c)) {
+                            max = commonLetters[((int)c) - 97];
+                            toGuess = c;
+                        }
+                    }
                 }
+
+                return toGuess;
 
             }
 
-            //find most common letter in remaining words
+            foreach (char c in ALPHABET) {
+                if (commonLetters[((int)c) - 97] > max) {
+                    if(!Contains(guessedChars, c)) {
+                        max = commonLetters[((int)c) - 97];
+                        toGuess = c;
+                    }
+                }
+            }
 
             return toGuess;
 
@@ -200,12 +218,27 @@ namespace Hangman
             if (response == 'y') {
                 Console.Write("\nPlease enter the position of the letter " + toGuess + " (a number between 1 and " + numOfChars + ")" + "\nEnter : ");
                 GetCharPositions(toGuess);
+                changeCommonLetters = true;
             } else {
                 Console.WriteLine(Messages.FailedGuess);
                 incorrectGuesses++;
             }
 
             guesses++;
+
+        }
+
+        private void ChangeCommonLetters() {
+
+            commonLetters = new int[26];
+
+            foreach(char[] cArr in posWords) {
+                for(int i = 0; i < cArr.Length; i++) {
+                    commonLetters[((int)cArr[i]) - 97]++;
+                }
+            }
+
+            changeCommonLetters = false;
 
         }
 
