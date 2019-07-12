@@ -39,23 +39,60 @@ namespace Hangman
 
             Console.WriteLine(Messages.Rules);
 
+            RUNGAME();
+
+            //End game, reset, add new word
+
+        }
+
+        private void RUNGAME() {
+
             GetUserWord();
 
             Console.WriteLine(Messages.Begin);
 
-            foreach(string s in words) {
-                if(s.Length == numOfChars) {
+            foreach (string s in words)
+            {
+                if (s.Length == numOfChars)
+                {
                     posWords.Add(s.ToCharArray());
                 }
             }
 
             DrawTurn();
 
-            while (MakeGuess()) {
+            while (MakeGuess())
+            {
                 DrawTurn();
+                if (WordFound(correctChars))
+                {
+                    Console.WriteLine(Messages.CompWin);
+                    break;
+                }
             }
 
-            //End game, reset, add new word
+            Clear();
+
+            Console.WriteLine(Messages.PlayAgain);
+            Console.Write(Messages.EnterYN);
+
+            char response = CheckValidity('y', 'n');
+
+            if (response == 'y') {
+                RUNGAME();
+            } else {
+                Console.WriteLine(Messages.GoodBye);
+            }
+
+        }
+
+        private void Clear() {
+
+            numOfChars = new int();
+            guessedChars = new List<char>();
+            guesses = 0;
+            incorrectGuesses = 0;
+            posWords = new List<char[]>();
 
         }
 
@@ -154,7 +191,31 @@ namespace Hangman
 
         }
 
+        private bool WordFound(char[] cArr) {
+
+            foreach(char c in cArr) {
+                if(c == default(char)) {
+                    return false;
+                }
+            }
+
+            return true;
+
+        }
+
         private bool MakeGuess() {
+
+            if(posWords.Count == 1) {
+                Console.WriteLine(Messages.GuessWord + posWords[0] + "?");
+                Console.Write(Messages.EnterYN);
+                char response = CheckValidity('y', 'n');
+                if (response == 'y') {
+                    Console.WriteLine(Messages.CompWin);
+                    return false;
+                } else {
+                    Console.WriteLine(Messages.GuessWordWrong);
+                }
+            }
 
             ExecGuess(ChooseGuess());
 
@@ -169,8 +230,6 @@ namespace Hangman
         }
 
         private char ChooseGuess() {
-            //The logic for this needs to be mostly random for first few
-            //Then should use posWords to determine ideal choice
 
             //TEMP
             changeCommonLetters = true;
@@ -185,9 +244,9 @@ namespace Hangman
             if (!Contains(correctChars, VOWELS)) {
 
                 foreach(char c in VOWELS) {
-                    if(commonLetters[((int)c) - 97] > max) {
-                        if(!Contains(guessedChars, c)) {
-                            max = commonLetters[((int)c) - 97];
+                    if (commonLetters[((int)c) - ASCIICONST] > max) {
+                        if (!Contains(guessedChars, c)) {
+                            max = commonLetters[((int)c) - ASCIICONST];
                             toGuess = c;
                         }
                     }
@@ -198,9 +257,9 @@ namespace Hangman
             }
 
             foreach (char c in ALPHABET) {
-                if (commonLetters[((int)c) - 97] > max) {
+                if (commonLetters[((int)c) - ASCIICONST] > max) {
                     if(!Contains(guessedChars, c)) {
-                        max = commonLetters[((int)c) - 97];
+                        max = commonLetters[((int)c) - ASCIICONST];
                         toGuess = c;
                     }
                 }
@@ -237,7 +296,7 @@ namespace Hangman
 
             foreach(char[] cArr in posWords) {
                 for(int i = 0; i < cArr.Length; i++) {
-                    commonLetters[((int)cArr[i]) - 97]++;
+                    commonLetters[((int)cArr[i]) - ASCIICONST]++;
                 }
             }
 
@@ -249,16 +308,6 @@ namespace Hangman
 
             char[] curChar = Console.ReadLine().ToLower().ToCharArray();
 
-            /*
-            if (curChar.Length != 1) {
-                Console.Write(Messages.InvalidEntry);
-                return CheckValidity(i, j);
-            } else if(curChar[0] != i || curChar[0] != j) {
-                Console.Write(Messages.InvalidEntry);
-                return CheckValidity(i, j);
-            }
-            */
-
             if (curChar[0] == i || curChar[0] == j) {
                 return curChar[0];
             } else {
@@ -266,15 +315,13 @@ namespace Hangman
                 return CheckValidity(i, j);
             }
 
-            //return curChar[0];
-
         }
 
         private void GetCharPositions(char guessed) {
 
             int pos = ParseForLength(numOfChars) - 1;
 
-            if (correctChars[pos] == default(char)) {
+            if(correctChars[pos] == default(char)) {
                 correctChars[pos] = guessed;
                 DrawGuesses();
                 UpdatePosWords(pos, guessed);
@@ -287,7 +334,7 @@ namespace Hangman
             Console.Write(Messages.EnterYN);
             char response = CheckValidity('y', 'n');
 
-            if (response == 'y') {
+            if(response == 'y') {
                 Console.Write("\nPlease enter the position of the letter " + guessed + " (a number between 1 and " + numOfChars + ")" + "\nEnter : ");
                 GetCharPositions(guessed);
             } 

@@ -79,6 +79,15 @@ namespace Hangman {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yay! I&apos;ve won!.
+        /// </summary>
+        internal static string CompWin {
+            get {
+                return ResourceManager.GetString("CompWin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter a valid file path for your word bank.
         ///Enter : .
         /// </summary>
@@ -119,6 +128,33 @@ namespace Hangman {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok! Goodbye!.
+        /// </summary>
+        internal static string GoodBye {
+            get {
+                return ResourceManager.GetString("GoodBye", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I think I know the word. is it .
+        /// </summary>
+        internal static string GuessWord {
+            get {
+                return ResourceManager.GetString("GuessWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Darn..
+        /// </summary>
+        internal static string GuessWordWrong {
+            get {
+                return ResourceManager.GetString("GuessWordWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid entry! Please input a valid entry.
         ///Enter : .
         /// </summary>
@@ -152,6 +188,15 @@ namespace Hangman {
         internal static string NextOccurence {
             get {
                 return ResourceManager.GetString("NextOccurence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Want to play again?.
+        /// </summary>
+        internal static string PlayAgain {
+            get {
+                return ResourceManager.GetString("PlayAgain", resourceCulture);
             }
         }
         
