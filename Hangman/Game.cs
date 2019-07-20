@@ -53,8 +53,7 @@ namespace Hangman
 
             foreach (string s in words)
             {
-                if (s.Length == numOfChars)
-                {
+                if(s.Length == numOfChars){
                     posWords.Add(s.ToCharArray());
                 }
             }
@@ -139,7 +138,8 @@ namespace Hangman
         private void FindFilePath()
         {
 
-            //Implement directory usage
+            //Check to see if this works in and app, not just VS
+            filePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\wordBank.txt"));
 
             if (filePath == null) {
                 Console.WriteLine(Messages.InvalidFilePath);
