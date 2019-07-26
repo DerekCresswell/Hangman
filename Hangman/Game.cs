@@ -265,7 +265,7 @@ namespace Hangman
                 }
             }
 
-            return toGuess;
+            return toGuess != default(char) ? toGuess : getRandomGuess();
 
         }
 
@@ -412,6 +412,22 @@ namespace Hangman
             }
 
             Console.WriteLine("\n");
+
+        }
+
+        private char getRandomGuess() {
+
+            Random rand = new Random();
+            char toGuess = ALPHABET[rand.Next(0, ALPHABET.Length)];
+
+            if(guessedChars.Count == ALPHABET.Length)
+                return default(char);
+
+            while(Contains(guessedChars, toGuess)) {
+                toGuess = ALPHABET[rand.Next(0, ALPHABET.Length)];
+            }
+
+            return toGuess;
 
         }
 
