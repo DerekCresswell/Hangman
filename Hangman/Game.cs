@@ -278,6 +278,23 @@ namespace Hangman
             char response = CheckValidity('y', 'n');
 
             if (response == 'y') {
+
+                if(CharsLeft(correctChars) == 1) {
+
+                    int index = 0;
+
+                    //Error catching needed
+                    while(correctChars[index] != default(char)) {
+                        index++;
+                    }
+
+                    correctChars[index] = toGuess;
+                    DrawGuesses();
+                    return;
+
+                }
+
+
                 Console.Write("\nPlease enter the position of the letter " + toGuess + " (a number between 1 and " + numOfChars + ")" + "\nEnter : ");
                 GetCharPositions(toGuess);
                 changeCommonLetters = true;
@@ -287,6 +304,19 @@ namespace Hangman
             }
 
             guesses++;
+
+        }
+
+        private int CharsLeft(char[] cArr) {
+
+            int count = 0;
+
+            foreach(char c in cArr) {
+                if(c == default(char))
+                    count++;
+            }
+
+            return count;
 
         }
 
