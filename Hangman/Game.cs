@@ -225,6 +225,7 @@ namespace Hangman
             } else {
                 Console.WriteLine(Messages.LostGame);
                 DrawMan(NUMSTAGES);
+                LearnNewWord();
                 return false;
             }
         }
@@ -458,6 +459,45 @@ namespace Hangman
             }
 
             return toGuess;
+
+        }
+
+        private void LearnNewWord() {
+
+            Console.WriteLine(Messages.WhatWasWord);
+            string actualWord;
+
+            //Check if char in actual was guessed
+            while(GuessedMatchesActual(out actualWord)) { }
+
+            if (words.Contains(actualWord)) {
+                Console.WriteLine(Messages.AlreadyKnown);
+            } else {
+                Console.WriteLine(Messages.NewWord);
+                //AddWordToBank(actualWord);
+            }
+
+        }
+
+        private bool GuessedMatchesActual(out string actualWord) {
+
+            Console.Write(Messages.EnterActual);
+            actualWord = Console.ReadLine().ToLower();
+            char[] actualArr = actualWord.ToCharArray();
+
+            if(actualWord.Length != correctChars.Length) {
+                Console.WriteLine(Messages.InvalidEntry);
+                return false;
+            } else {
+                for (int i = 0; i < actualWord.Length; i++) {
+                    if (actualArr[i] != correctChars[i] || correctChars[i] == default(char)) {
+                        Console.WriteLine(Messages.InvalidEntry);
+                        return false;
+                    }
+                }
+            }
+
+            return true;
 
         }
 

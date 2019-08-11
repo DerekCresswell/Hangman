@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AlreadyKnown" xml:space="preserve">
+    <value>Bah! Shoulda known. </value>
+  </data>
   <data name="Begin" xml:space="preserve">
     <value>Great! Let's begin playing!</value>
   </data>
@@ -125,6 +128,10 @@
   </data>
   <data name="CompWin" xml:space="preserve">
     <value>Yay! I've won!</value>
+  </data>
+  <data name="EnterActual" xml:space="preserve">
+    <value>Please enter the word you were thinking.
+Enter : </value>
   </data>
   <data name="EnterFilePath" xml:space="preserve">
     <value>Please enter a valid file path for your word bank.
@@ -160,6 +167,9 @@ Enter : </value>
   </data>
   <data name="LostGame" xml:space="preserve">
     <value>I've lost!</value>
+  </data>
+  <data name="NewWord" xml:space="preserve">
+    <value>Hmm, maybe I'll get it next time.</value>
   </data>
   <data name="NextOccurence" xml:space="preserve">
     <value>Is there another occurence of the letter </value>
@@ -275,5 +285,8 @@ Please read and follow the rules while playing,
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to Hangman!
 </value>
+  </data>
+  <data name="WhatWasWord" xml:space="preserve">
+    <value>What was the word?</value>
   </data>
 </root>

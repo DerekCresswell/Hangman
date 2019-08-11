@@ -61,6 +61,15 @@ namespace Hangman {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bah! Shoulda known. .
+        /// </summary>
+        internal static string AlreadyKnown {
+            get {
+                return ResourceManager.GetString("AlreadyKnown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Great! Let&apos;s begin playing!.
         /// </summary>
         internal static string Begin {
@@ -84,6 +93,16 @@ namespace Hangman {
         internal static string CompWin {
             get {
                 return ResourceManager.GetString("CompWin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the word you were thinking.
+        ///Enter : .
+        /// </summary>
+        internal static string EnterActual {
+            get {
+                return ResourceManager.GetString("EnterActual", resourceCulture);
             }
         }
         
@@ -179,6 +198,15 @@ namespace Hangman {
         internal static string LostGame {
             get {
                 return ResourceManager.GetString("LostGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hmm, maybe I&apos;ll get it next time..
+        /// </summary>
+        internal static string NewWord {
+            get {
+                return ResourceManager.GetString("NewWord", resourceCulture);
             }
         }
         
@@ -360,6 +388,15 @@ namespace Hangman {
         internal static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What was the word?.
+        /// </summary>
+        internal static string WhatWasWord {
+            get {
+                return ResourceManager.GetString("WhatWasWord", resourceCulture);
             }
         }
     }
