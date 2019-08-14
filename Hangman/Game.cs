@@ -474,7 +474,7 @@ namespace Hangman
                 Console.WriteLine(Messages.AlreadyKnown);
             } else {
                 Console.WriteLine(Messages.NewWord);
-                //AddWordToBank(actualWord);
+                AddWordToBank(actualWord);
             }
 
         }
@@ -498,6 +498,34 @@ namespace Hangman
             }
 
             return true;
+
+        }
+
+        private void AddWordToBank(String newWord) {
+
+            //Should always be lower case already
+            int bankIndex = 0;
+            while(bankIndex < words.Count) {
+
+                int charIndex = 0;
+
+                try {
+
+                    while (newWord[charIndex] < words[bankIndex][charIndex]) {
+                        charIndex++;
+                    }
+
+                    bankIndex++;
+
+                } catch (IndexOutOfRangeException) {
+
+                    bankIndex++;
+
+                }
+
+            }
+
+            Console.WriteLine("BANKINDEX : " + bankIndex);
 
         }
 
