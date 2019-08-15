@@ -5,5 +5,5 @@ One of the main goals of this project (other than having a friend to play games 
 
 # Future Plans
 
--Learning, the program will learn new words and ideas based off of your words.
--Command line access, allow this program to be called and played in the command line without needing a standalone app.
+*Learning, the program will learn new words and ideas based off of your words.
+*Command line access, allow this program to be called and played in the command line without needing a standalone app.
