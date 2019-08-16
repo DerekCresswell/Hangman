@@ -504,24 +504,20 @@ namespace Hangman
         private void AddWordToBank(String newWord) {
 
             //Should always be lower case already
+
             int bankIndex = 0;
-            while(bankIndex < words.Count) {
+            foreach(String s in words) {
 
                 int charIndex = 0;
+                foreach(Char c in s) {
+                    if((int)c > (int)newWord[charIndex])
+                        break;
 
-                try {
-
-                    while (newWord[charIndex] < words[bankIndex][charIndex]) {
-                        charIndex++;
-                    }
-
-                    bankIndex++;
-
-                } catch (IndexOutOfRangeException) {
-
-                    bankIndex++;
+                    charIndex++;
 
                 }
+
+                bankIndex++;
 
             }
 
