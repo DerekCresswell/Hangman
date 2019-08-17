@@ -505,13 +505,13 @@ namespace Hangman
             int charIndex = 0;
 
             bankIndex = binarySearch(words, newWord, 0);
-            while((int)words[bankIndex][0] == (int)newWord[0]) {
+            while(words[bankIndex][0] == newWord[0]) {
                 bankIndex--;
             }
+            bankIndex++;
+            //find higher bound index?
 
-
-            Console.WriteLine(bankIndex);
-
+            //Continue through next letters
 
         }
 
@@ -519,7 +519,6 @@ namespace Hangman
 
             int lowerBound = 0;
             int higherBound = words.Count;
-            Console.WriteLine(higherBound);
 
             while (lowerBound <= higherBound)
             {
@@ -530,7 +529,6 @@ namespace Hangman
                 } else if ((int)bank[midPoint][targetIndex] < (int)word[targetIndex]) {
                     lowerBound = midPoint + 1;
                 } else {
-                    Console.WriteLine(midPoint);
                     return midPoint;
                 }
 
