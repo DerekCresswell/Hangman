@@ -100,7 +100,7 @@ namespace Hangman
         }
 
         private void SetWordsArray() {
-            
+
             try {
 
                 UseStreamReader();
@@ -124,11 +124,10 @@ namespace Hangman
 
             using (StreamReader sr = new StreamReader(filePath)) {
 
-                string curLine = sr.ReadLine();
+                string line;
 
-                while (curLine != null) {
-                    words.Add(curLine);
-                    curLine = sr.ReadLine();
+                while ((line = sr.ReadLine()) != null) {
+                    words.Add(line);
                 }
 
             }
@@ -146,8 +145,6 @@ namespace Hangman
                 Console.Write(Messages.EnterFilePath);
                 filePath = Console.ReadLine();
             }
-
-            SetWordsArray();
 
         }
 
@@ -504,26 +501,45 @@ namespace Hangman
         private void AddWordToBank(String newWord) {
 
             //Should always be lower case already
-
             int bankIndex = 0;
-            foreach(String s in words) {
+            int charIndex = 0;
 
-                int charIndex = 0;
-                foreach(Char c in s) {
-                    if((int)c > (int)newWord[charIndex])
-                        break;
+            bankIndex = binarySearch(words, newWord, 0);
+            while((int)words[bankIndex][0] == (int)newWord[0]) {
+                bankIndex--;
+            }
 
-                    charIndex++;
 
+            Console.WriteLine(bankIndex);
+
+
+        }
+
+        private int binarySearch(List<string> bank, string word, int targetIndex) {
+
+            int lowerBound = 0;
+            int higherBound = words.Count;
+            Console.WriteLine(higherBound);
+
+            while (lowerBound <= higherBound)
+            {
+
+                int midPoint = (lowerBound + higherBound) / 2;
+                if ((int)bank[midPoint][targetIndex] > (int)word[targetIndex]) {
+                    higherBound = midPoint - 1;
+                } else if ((int)bank[midPoint][targetIndex] < (int)word[targetIndex]) {
+                    lowerBound = midPoint + 1;
+                } else {
+                    Console.WriteLine(midPoint);
+                    return midPoint;
                 }
-
-                bankIndex++;
 
             }
 
-            Console.WriteLine("BANKINDEX : " + bankIndex);
+            return -1;
 
         }
 
     }
+
 }
