@@ -335,7 +335,8 @@ namespace Hangman
         private char CheckValidity(char i, char j) {
 
             char[] curChar = Console.ReadLine().ToLower().ToCharArray();
-
+            
+            //If enter is pressed without anything written this errors
             if (curChar[0] == i || curChar[0] == j) {
                 return curChar[0];
             } else {
@@ -502,16 +503,41 @@ namespace Hangman
 
             //Should always be lower case already
             int bankIndex = 0;
-            int charIndex = 0;
 
             bankIndex = binarySearch(words, newWord, 0);
             while(words[bankIndex][0] == newWord[0]) {
                 bankIndex--;
             }
             bankIndex++;
-            //find higher bound index?
+            //The above section must be improved
 
-            //Continue through next letters
+            while(words[bankIndex][0] == newWord[0]) {
+                
+                string bankWord = words[bankIndex];
+                bool flag = false;
+
+                for(int charIndex = 1; charIndex < newWord.Length; charIndex++) {
+
+                    if(charIndex < bankWord.Length) {
+                        if ((int)newWord[charIndex] > (int)bankWord[charIndex]) {
+                            break;
+                        } else if(newWord[charIndex] == bankWord[charIndex]) {
+                            continue;
+                        } else {
+                            flag = true;
+                            break;
+                        }
+                    }
+
+                }
+
+                if(flag)
+                    break;
+                bankIndex++;
+
+            }
+            
+            Console.WriteLine(words[bankIndex] + " Which is index : " + bankIndex);
 
         }
 

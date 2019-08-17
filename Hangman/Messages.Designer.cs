@@ -156,7 +156,7 @@ namespace Hangman {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I think I know the word. is it .
+        ///   Looks up a localized string similar to I think I know the word. Is it .
         /// </summary>
         internal static string GuessWord {
             get {

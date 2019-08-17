@@ -153,7 +153,7 @@ Enter : </value>
     <value>Ok! Goodbye!</value>
   </data>
   <data name="GuessWord" xml:space="preserve">
-    <value>I think I know the word. is it </value>
+    <value>I think I know the word. Is it </value>
   </data>
   <data name="GuessWordWrong" xml:space="preserve">
     <value>Darn.</value>
