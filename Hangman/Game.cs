@@ -537,7 +537,7 @@ namespace Hangman
 
             }
             
-            Console.WriteLine(words[bankIndex] + " Which is index : " + bankIndex);
+            words.Insert(bankIndex, newWord);
 
         }
 
