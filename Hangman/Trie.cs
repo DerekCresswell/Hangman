@@ -20,11 +20,13 @@ namespace Hangman {
 
             foreach(char c in word){
 
-                if(curNode.children[c] != null){
-                    curNode = curNode.children[c];
+                int indexOfC = IndexOf(curNode.children, c);
+
+                if(indexOfC != -1){
+                    curNode = curNode.children[indexOfC];
                 } else {
                     TrieNode newNode = new TrieNode(c, curNode);
-                    curNode.children[c] = newNode;
+                    curNode.children.Add(newNode);
                     curNode = newNode;
                 }
 
@@ -40,8 +42,10 @@ namespace Hangman {
 
             foreach(char c in word){
 
-                if(curNode.children[c] != null){
-                    curNode = curNode.children[c];
+                int indexOfC = IndexOf(curNode.children, c);
+
+                if(indexOfC != -1){
+                    curNode = curNode.children[indexOfC];
                 } else {
                     return false;
                 }
@@ -49,6 +53,24 @@ namespace Hangman {
             }
 
             return true;
+
+        }
+
+        public void RemoveWord(string word){
+
+
+
+        }
+
+        //Temp, Hopefully
+        private int IndexOf(List<TrieNode> tArr, char check) {
+
+            for(int i = 0; i < tArr.Count; i++){
+                if(tArr[i].value == check)
+                    return i;
+            }
+
+            return -1;
 
         }
 
