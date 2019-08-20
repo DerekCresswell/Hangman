@@ -34,6 +34,24 @@ namespace Hangman {
 
         }
 
+        public bool FindWord(string word){
+
+            TrieNode curNode = rootNode;
+
+            foreach(char c in word){
+
+                if(curNode.children[c] != null){
+                    curNode = curNode.children[c];
+                } else {
+                    return false;
+                }
+
+            }
+
+            return true;
+
+        }
+
     }
 
     class TrieNode {
@@ -50,7 +68,7 @@ namespace Hangman {
 
         }
 
-        internal TrieNode() {}
+        internal TrieNode(){}
 
     }
 
