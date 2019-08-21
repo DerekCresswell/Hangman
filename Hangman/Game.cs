@@ -481,14 +481,13 @@ namespace Hangman
 
             Console.Write(Messages.EnterActual);
             actualWord = Console.ReadLine().ToLower();
-            char[] actualArr = actualWord.ToCharArray();
 
             if(actualWord.Length != correctChars.Length) {
                 Console.WriteLine(Messages.InvalidEntry);
                 return false;
             } else {
                 for (int i = 0; i < actualWord.Length; i++) {
-                    if (actualArr[i] != correctChars[i] || correctChars[i] == default(char)) {
+                    if (actualWord[i] != correctChars[i] || correctChars[i] == default(char)) {
                         Console.WriteLine(Messages.InvalidEntry);
                         return false;
                     }

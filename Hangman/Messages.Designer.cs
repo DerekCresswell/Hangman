@@ -128,7 +128,8 @@ namespace Hangman {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Oh no! I&apos;ll try again..
+        ///   Looks up a localized string similar to 
+        ///Oh no! I&apos;ll try again..
         /// </summary>
         internal static string FailedGuess {
             get {
@@ -220,7 +221,8 @@ namespace Hangman {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Want to play again?.
+        ///   Looks up a localized string similar to 
+        ///Want to play again?.
         /// </summary>
         internal static string PlayAgain {
             get {
