@@ -58,7 +58,34 @@ namespace Hangman {
 
         public void RemoveWord(string word){
 
+            TrieNode curNode = rootNode;
+            List<TrieNode> path = new List<TrieNode>();
 
+            foreach(char c in word){
+
+                int indexOfC = IndexOf(curNode.children, c);
+
+                if(indexOfC != -1){
+                    curNode = curNode.children[indexOfC];
+                    path.Insert(0, curNode);
+                } else {
+                    return;
+                }
+
+            }
+
+            for(int i = 1; i < path.Count; i++){
+
+                TrieNode parent = path[i];
+                TrieNode child = path[i - 1];
+
+                if(child.completeString || child.children.Count != 0){
+                    return;
+                } else {
+                    parent.children.Remove(child);
+                }
+
+            }
 
         }
 

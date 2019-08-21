@@ -17,11 +17,13 @@ namespace Hangman
             t.AddWord("lists");
             t.AddWord("listen");
             t.AddWord("be");
-            t.AddWord("being");
+            t.AddWord("been");
+
+            t.RemoveWord("been");
 
             Console.WriteLine(t.FindWord("lists"));
             Console.WriteLine(t.FindWord("be"));
-            Console.WriteLine(t.FindWord("best"));
+            Console.WriteLine(t.FindWord("been"));
 
         }
 
