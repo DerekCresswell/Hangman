@@ -365,6 +365,22 @@ namespace Hangman
 
             if(response == 'y') {
                 Console.Write("\nPlease enter the position of the letter " + guessed + " (a number between 1 and " + numOfChars + ")" + "\nEnter : ");
+
+                if(CharsLeft(correctChars) == 1) {
+
+                    int index = 0;
+
+                    //Error catching needed
+                    while(correctChars[index] != default(char)) {
+                        index++;
+                    }
+
+                    correctChars[index] = guessed;
+                    DrawGuesses();
+                    return;
+
+                }
+
                 GetCharPositions(guessed);
             } 
             //Need escape if you accidently put y
