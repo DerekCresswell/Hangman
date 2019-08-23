@@ -74,13 +74,20 @@ namespace Hangman {
 
             }
 
+            bool flagFirst = false;
+
             for(int i = 1; i < path.Count; i++){
 
                 TrieNode parent = path[i];
                 TrieNode child = path[i - 1];
 
                 if(child.completeString || child.children.Count != 0){
-                    return;
+                    if(!flagFirst){
+                        flagFirst = true;
+                        parent.children.Remove(child);
+                    } else {
+                        return;
+                    }
                 } else {
                     parent.children.Remove(child);
                 }
